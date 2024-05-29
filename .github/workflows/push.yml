@@ -12,11 +12,11 @@ on:
 jobs:
   push-images:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'omec-project'
+    if: github.repository_owner == 'sodyn99'
     env:
-      REGISTRY: registry.aetherproject.org
-      DOCKER_REGISTRY: registry.aetherproject.org/
-      DOCKER_REPOSITORY: sdcore/
+      REGISTRY: docker.io/
+      DOCKER_REGISTRY: docker.io/
+      DOCKER_REPOSITORY: khusdran/
     steps:
       - uses: actions/checkout@v4
 

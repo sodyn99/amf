@@ -6,7 +6,8 @@
 #
 
 PROJECT_NAME             := sdcore
-DOCKER_VERSION           ?= $(shell cat ./VERSION)
+# DOCKER_VERSION           ?= $(shell cat ./VERSION)
+DOCKER_VERSION           ?= test
 
 ## Docker related
 DOCKER_REGISTRY          ?=
@@ -72,7 +73,7 @@ docker-build:
 	for target in $(DOCKER_TARGETS); do \
 		DOCKER_BUILDKIT=$(DOCKER_BUILDKIT) docker build  $(DOCKER_BUILD_ARGS) \
 			--target $$target \
-			--tag ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}5gc-$$target:${DOCKER_TAG} \
+			--tag ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}onos-kpimon:test \
 			--build-arg org_label_schema_version="${DOCKER_VERSION}" \
 			--build-arg org_label_schema_vcs_url="${DOCKER_LABEL_VCS_URL}" \
 			--build-arg org_label_schema_vcs_ref="${DOCKER_LABEL_VCS_REF}" \
@@ -85,7 +86,7 @@ docker-build:
 
 docker-push:
 	for target in $(DOCKER_TARGETS); do \
-		docker push ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}5gc-$$target:${DOCKER_TAG}; \
+		docker push ${DOCKER_REGISTRY}${DOCKER_REPOSITORY}onos-kpimon:test; \
 	done
 
 .coverage:
